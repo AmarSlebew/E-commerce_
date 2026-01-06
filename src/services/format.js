@@ -1,8 +1,8 @@
 
 const formatIDR = (value) => {
-    return new Intl.NumberFormat('id-ID', {
+    return new Intl.NumberFormat('en-US', {
         style : "currency",
-        currency : "IDR",
+        currency : "USD",
         maximumFractionDigits : 0,
     }).format(value)
 }

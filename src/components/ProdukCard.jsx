@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import formatIDR from "../services/format";
+import { ShoppingCart } from "lucide-react";
 
 export default function ProdukCard({ produk }) {
+
+    const[imgLoad, setLoad] = useState(false)
+
   return (
     <div
-      className="h-110 rounded-xl overflow-hidden bg-white shadow-xl border "
+      className="h-110 rounded-xl overflow-hidden bg-white shadow-xl "
     >
+      
       {/* gambar */}
       <div className="w-full h-52 ">
+
+      {/* skeleton load gambar */}
+
+      {!imgLoad && (
+        <div className="w-100 h-full bg-gray-200 animate-pulse"></div>
+      )}
+
         <img
-          src={produk.image}
-          alt={produk.title}
-          className="w-full h-full object-cover"
+          src={produk.thumbnail}
+          className="w-full h-full object-contain"
+          onLoad={() => setLoad(true)}
         />
       </div>
       {/* Judul dan harga */}
@@ -22,12 +34,13 @@ export default function ProdukCard({ produk }) {
 
       {/* Deskripsi dan bintang */}
       <div className="px-5 mt-3">
-        <p className="w-70 font-mono text-xs">{produk.description}</p>
+        <p className="w-70 font-mono text-xs line-clamp-2">{produk.description}</p>
       </div>
       {/* button cart */}
-      <button className="border rounded-2xl p-2 font-family font-bold m-4 transition-all delay-75 ease-in-out hover:bg-green-800 hover:text-white hover:cursor-pointer">
+      <button className="border rounded-2xl p-2 font-family font-bold m-4 absolute transition-all delay-75 ease-in-out hover:bg-green-800 hover:text-white hover:cursor-pointer">
         Add to chart
       </button>
+      
     </div>
   );
 }

@@ -7,7 +7,7 @@ export default function Navbar() {
   const[pInput, setPinput] = useState(false);
 
   return (
-    <nav className="flex  shadow-xs items-center justify-between w-full h-30 p-4 top-0 sticky backdrop-blur-md bg-white/85 ">
+    <nav className="flex  shadow-xs items-center justify-between w-full h-30 p-4 top-0 z-50 sticky backdrop-blur-md bg-white/85 ">
       <div className="flex gap-30">
         {/* logo */}
         <div className="m-0">
